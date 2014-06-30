@@ -1,52 +1,59 @@
 
-public class Node {
-	private Node parent;
-	private Node child;
-	private Node left;
-	private Node right;
+public class Node<T> {
 	private int degree;
 	private boolean mark;
-	private Point point;
-	private int key;
 	
-	public Node(Point p){
-		point = p;
+	private Node<T> parent;
+	private Node<T> child;
+	private Node<T> left;
+	private Node<T> right;
+	private T element;
+	private double key;
+	private boolean inHeap;
+	
+	public Node(T elem){
+		this(elem, Double.POSITIVE_INFINITY);
+	}
+	
+	public Node(T elem, double aKey){
+		element = elem;
 		parent = child = null;
 		left = right = this;
 		mark = false;
 		degree = 0;
-		key = Integer.MAX_VALUE;
+		key = aKey;
+		inHeap = false;
 	}
 
-	public Node getParent() {
+	public Node<T> getParent() {
 		return parent;
 	}
 
-	public void setParent(Node parent) {
+	public void setParent(Node<T> parent) {
 		this.parent = parent;
 	}
 
-	public Node getChild() {
+	public Node<T> getChild() {
 		return child;
 	}
 
-	public void setChild(Node child) {
+	public void setChild(Node<T> child) {
 		this.child = child;
 	}
 
-	public Node getLeft() {
+	public Node<T> getLeft() {
 		return left;
 	}
 
-	public void setLeft(Node left) {
+	public void setLeft(Node<T> left) {
 		this.left = left;
 	}
 
-	public Node getRight() {
+	public Node<T> getRight() {
 		return right;
 	}
 
-	public void setRight(Node right) {
+	public void setRight(Node<T> right) {
 		this.right = right;
 	}
 
@@ -57,8 +64,16 @@ public class Node {
 	public void setDegree(int degree) {
 		this.degree = degree;
 	}
+	
+	public void increaseDegree(){
+		this.degree++;
+	}
+	
+	public void decreaseDegree(){
+		this.degree--;
+	}
 
-	public boolean isMark() {
+	public boolean isMarked() {
 		return mark;
 	}
 
@@ -66,20 +81,28 @@ public class Node {
 		this.mark = mark;
 	}
 
-	public Point getPoint() {
-		return point;
+	public T getElement() {
+		return element;
 	}
 
-	public void setPoint(Point point) {
-		this.point = point;
+	public void setElement(T elem) {
+		this.element = elem;
 	}
 
-	public int getKey() {
+	public double getKey() {
 		return key;
 	}
 
-	public void setKey(int key) {
+	public void setKey(double key) {
 		this.key = key;
+	}
+	
+	public boolean isInHeap(){
+		return inHeap;
+	}
+
+	public void setInHeap(boolean b) {
+		inHeap = b;
 	}
 	
 	

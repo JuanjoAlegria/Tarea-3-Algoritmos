@@ -12,6 +12,10 @@ public class Instance {
 		sortEdges();
 	}
 	
+	public  List<Point> getPoints(){
+		return points;
+	}
+	
 	private void buildEdges(){
 		int n = points.size();
 		edges = new ArrayList<Edge>(n*(n-1)/2);
