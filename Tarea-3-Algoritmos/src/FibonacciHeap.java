@@ -4,7 +4,7 @@ import java.util.List;
 
 public class FibonacciHeap<T>{
 	private int size;
-	private Node<T> min;
+	private HeapNode<T> min;
 	
 	public FibonacciHeap(){
 		size = 0;
@@ -19,11 +19,11 @@ public class FibonacciHeap<T>{
 		this.size = n;
 	}
 
-	public Node<T> getMin() {
+	public HeapNode<T> getMin() {
 		return min;
 	}
 
-	public void setMin(Node<T> min) {
+	public void setMin(HeapNode<T> min) {
 		this.min = min;
 	}
 
@@ -40,18 +40,18 @@ public class FibonacciHeap<T>{
 		return result;
 	}
 	
-	public void insert(Node<T> node){
+	public void insert(HeapNode<T> node){
 		this.min = (mergeLists(min, node));
 		node.setInHeap(true);
 		size++;
 	}
 	
 	public void insert(T elem, double key){
-		Node<T> node = new Node<T>(elem, key);
+		HeapNode<T> node = new HeapNode<T>(elem, key);
 		insert(node);
 	}
 	
-	private static <T> Node<T> mergeLists(Node<T> one, Node<T> two){
+	private static <T> HeapNode<T> mergeLists(HeapNode<T> one, HeapNode<T> two){
 		if (one == null && two == null)
 			return null;
 		else if (one != null && two == null)
@@ -59,13 +59,13 @@ public class FibonacciHeap<T>{
 		else if (one == null && two != null)
 			return two;
 		else{
-			Node<T> oneRight = one.getRight();
+			HeapNode<T> oneRight = one.getRight();
 			one.setRight(two.getRight());
 			one.getRight().setLeft(one);
 			two.setRight(oneRight);
 			two.getRight().setLeft(two);
 			
-			return one.getKey() < two.getKey()? one: two;
+			return (one.getKey() < two.getKey())? one: two;
 		}
 	}
 	
@@ -73,15 +73,16 @@ public class FibonacciHeap<T>{
 		return min == null;
 	}
 
-	public Node<T> extractMin(){
+	public HeapNode<T> extractMin(){
 		if (isEmpty())
 			return null;
 		
 		size--;
-		Node<T> resultMin = min;
+		HeapNode<T> resultMin = min;
+		resultMin.setInHeap(false);
 		
 		if (min.getRight() == min)
-			return min;
+			min = null;
 		else{
 			min.getLeft().setRight(min.getRight());
 			min.getRight().setLeft(min.getLeft());
@@ -89,7 +90,7 @@ public class FibonacciHeap<T>{
 		}
 		
 		if (resultMin.getChild() != null){
-			Node<T> current = min.getChild();
+			HeapNode<T> current = resultMin.getChild();
 			do {
 				current.setParent(null);
 				current = current.getRight();
@@ -101,14 +102,14 @@ public class FibonacciHeap<T>{
 		if (min == null)
 			return resultMin;
 		
-		List<Node<T>> treeTable = new ArrayList<Node<T>>();
+		List<HeapNode<T>> treeTable = new ArrayList<HeapNode<T>>();
 		
-		List<Node<T>> toVisit = new ArrayList<Node<T>>();
+		List<HeapNode<T>> toVisit = new ArrayList<HeapNode<T>>();
 		
-		for (Node<T> current = min; toVisit.isEmpty() || toVisit.get(0) != current; current = current.getRight())
+		for (HeapNode<T> current = min; toVisit.isEmpty() || toVisit.get(0) != current; current = current.getRight())
 			toVisit.add(current);
 		
-		for (Node<T> current : toVisit){
+		for (HeapNode<T> current : toVisit){
 			while (true){
 				int currentDegree = current.getDegree();
 				while (currentDegree >= treeTable.size())
@@ -119,17 +120,17 @@ public class FibonacciHeap<T>{
 					break;
 				}
 				
-				Node<T> other = treeTable.get(currentDegree);
+				HeapNode<T> other = treeTable.get(currentDegree);
 				treeTable.set(currentDegree, null);
 				
-				Node<T> min = (current.getKey() < other.getKey())? current : other;
-				Node<T> max = (current.getKey() < other.getKey())? other : current;
+				HeapNode<T> min = (current.getKey() < other.getKey())? current : other;
+				HeapNode<T> max = (current.getKey() < other.getKey())? other : current;
 				
 				max.getRight().setLeft(max.getLeft());
 				max.getLeft().setRight(max.getRight());
 				
-				max.setLeft(null);
-				max.setRight(null);
+				max.setLeft(max);
+				max.setRight(max);
 				
 				min.setChild(mergeLists(max, min.getChild()));
 				
@@ -143,19 +144,18 @@ public class FibonacciHeap<T>{
 			if (current.getKey() <= this.min.getKey())
 				this.min = current;
 		}
-		resultMin.setInHeap(false);
 		return resultMin;		
 	}
 
-	public void decreaseKey(Node<T> node, double newKey){
+	public void decreaseKey(HeapNode<T> node, double newKey){
 		if (node.getKey() < newKey)
 			return; // no se hace nada
 		decreaseKeyUnchecked(node, newKey);
 	}
 
-	private void decreaseKeyUnchecked(Node<T> node, double newKey) {
+	private void decreaseKeyUnchecked(HeapNode<T> node, double newKey) {
 		node.setKey(newKey);
-		Node<T> parent = node.getParent();
+		HeapNode<T> parent = node.getParent();
 		if (parent != null && node.getKey() <= parent.getKey()){
 			cutNode(node, parent);
 			cascadingCut(parent);
@@ -165,15 +165,22 @@ public class FibonacciHeap<T>{
 			min = node;		
 	}
 	
-	private void cutNode(Node<T> node, Node<T> parent){
+	private void cutNode(HeapNode<T> node, HeapNode<T> parent){
 		// sacamos node de la lista de hijos de parent;
 		if (node.getRight() != node){
 			node.getRight().setLeft(node.getLeft());
 			node.getLeft().setRight(node.getRight());
 		}
-		node.setLeft(null);
-		node.setRight(null);
 		parent.decreaseDegree();
+		if (parent.getChild() == node){ // en caso de que el nodo padre esté justo apuntando a este nodo como a su hijo
+			if (node.getRight() != node)
+				parent.setChild(node.getRight());
+			else
+				parent.setChild(null);
+		}
+		
+		node.setLeft(node);
+		node.setRight(node);		
 		
 		// añadimos node a la lista de raíces del fib heap
 		min = mergeLists(node, min); 
@@ -184,8 +191,8 @@ public class FibonacciHeap<T>{
 		node.setMark(false);
 	}
 	
-	private void cascadingCut(Node<T> node){
-		Node<T> parent = node.getParent();
+	private void cascadingCut(HeapNode<T> node){
+		HeapNode<T> parent = node.getParent();
 		if (parent != null){
 			if (!node.isMarked())
 				node.setMark(true);
@@ -196,7 +203,7 @@ public class FibonacciHeap<T>{
 		}
 	}
 	
-	public void delete(Node<T> node){
+	public void delete(HeapNode<T> node){
 		decreaseKey(node, Double.NEGATIVE_INFINITY);
 		extractMin();
 	}

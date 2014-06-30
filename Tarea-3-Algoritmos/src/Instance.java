@@ -9,7 +9,6 @@ public class Instance {
 	public Instance(List<Point> points){
 		this.points = points;
 		buildEdges();
-		sortEdges();
 	}
 	
 	public  List<Point> getPoints(){
@@ -24,10 +23,6 @@ public class Instance {
 				edges.add(new Edge(p1, p2));
 			}
 		}			
-	}
-	
-	private void sortEdges(){
-		QuickSort.sort(edges);		
 	}
 	
 	

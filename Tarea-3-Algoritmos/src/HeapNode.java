@@ -1,59 +1,60 @@
 
-public class Node<T> {
+public class HeapNode<T> {
 	private int degree;
 	private boolean mark;
 	
-	private Node<T> parent;
-	private Node<T> child;
-	private Node<T> left;
-	private Node<T> right;
+	private HeapNode<T> parent;
+	private HeapNode<T> child;
+	private HeapNode<T> left;
+	private HeapNode<T> right;
 	private T element;
 	private double key;
 	private boolean inHeap;
 	
-	public Node(T elem){
+	public HeapNode(T elem){
 		this(elem, Double.POSITIVE_INFINITY);
 	}
 	
-	public Node(T elem, double aKey){
+	public HeapNode(T elem, double aKey){
 		element = elem;
 		parent = child = null;
-		left = right = this;
+		left = this;
+		right = this;
 		mark = false;
 		degree = 0;
 		key = aKey;
 		inHeap = false;
 	}
 
-	public Node<T> getParent() {
+	public HeapNode<T> getParent() {
 		return parent;
 	}
 
-	public void setParent(Node<T> parent) {
+	public void setParent(HeapNode<T> parent) {
 		this.parent = parent;
 	}
 
-	public Node<T> getChild() {
+	public HeapNode<T> getChild() {
 		return child;
 	}
 
-	public void setChild(Node<T> child) {
+	public void setChild(HeapNode<T> child) {
 		this.child = child;
 	}
 
-	public Node<T> getLeft() {
+	public HeapNode<T> getLeft() {
 		return left;
 	}
 
-	public void setLeft(Node<T> left) {
+	public void setLeft(HeapNode<T> left) {
 		this.left = left;
 	}
 
-	public Node<T> getRight() {
+	public HeapNode<T> getRight() {
 		return right;
 	}
 
-	public void setRight(Node<T> right) {
+	public void setRight(HeapNode<T> right) {
 		this.right = right;
 	}
 

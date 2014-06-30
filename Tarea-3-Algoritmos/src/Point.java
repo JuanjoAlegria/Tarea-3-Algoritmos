@@ -3,15 +3,13 @@ public class Point {
 	private double x;
 	private double y;
 	private Point mstParent; // estos dos campos se utilizan en la aproximación MST
-	private boolean inFibHeap;
-	private Node<Point> node; // referencia al nodo que lo contiene;
-
+	private HeapNode<Point> heapNode; // referencia al nodo que lo contiene;
+	private TreeNode<Point> treeNode;
 	
 	public Point(double x, double y){
 		this.x = x;
 		this.y = y;
 		mstParent = null;
-		inFibHeap = true;
 	}
 	
 	public double getX(){
@@ -38,13 +36,21 @@ public class Point {
 		this.mstParent = mstParent;
 	}
 	
-	public Node<Point> getNode(){
-		return node;
+	public HeapNode<Point> getHeapNode(){
+		return heapNode;
 	}
 	
-	public void setNode(Node<Point> node){
-		this.node = node;
+	public void setHeapNode(HeapNode<Point> node){
+		this.heapNode = node;
 	}
+	public TreeNode<Point> getTreeNode(){
+		return treeNode;
+	}
+	
+	public void setTreeNode(TreeNode<Point> node){
+		this.treeNode = node;
+	}
+	
 	
 	public int compareTo(Point o2) {
 		if(o2.x == this.x){
