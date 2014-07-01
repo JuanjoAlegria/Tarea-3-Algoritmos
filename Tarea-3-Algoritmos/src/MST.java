@@ -57,8 +57,6 @@ public class MST {
 		root.setElement(first.getElement());
 		first.getElement().setTreeNode(root);
 		while (!heap.isEmpty()){
-			if (i == 4662)
-				System.out.println("STOP");
 			HeapNode<Point> currentHeapNode = heap.extractMin(); //extrae el mínimo
 			Point currentPoint = currentHeapNode.getElement();
 			System.out.println(i++);
