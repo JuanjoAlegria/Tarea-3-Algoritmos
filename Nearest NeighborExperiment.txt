@@ -1,0 +1,36 @@
+Resultados del experimento con N
+Pais: Western Sahara
+Tiempo [s]: 0.014860691
+Distance: 33940.1116618703
+Ratio: 1.229580540588715
+
+Pais: Djibouti
+Tiempo [s]: 0.016722941
+Distance: 9118.675621409657
+Ratio: 1.369993332543518
+
+Pais: Qatar
+Tiempo [s]: 0.23656842
+Distance: 12970.475511875089
+Ratio: 1.3869199649139317
+
+Pais: Uruguay
+Tiempo [s]: 0.403489482
+Distance: 113110.61043600603
+Ratio: 1.4297167433830424
+
+Pais: Zimbabwe
+Tiempo [s]: 0.49855153100000005
+Distance: 134754.09692863392
+Ratio: 1.4133315530823214
+
+Pais: Oman
+Tiempo [s]: 7.698925474
+Distance: 124154.40851474184
+Ratio: 1.4288523381563318
+
+Pais: Canada
+Tiempo [s]: 24.91115774
+Distance: 1821583.434229643
+Ratio: 1.411731079081718
+

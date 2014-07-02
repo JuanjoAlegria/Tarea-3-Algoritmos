@@ -6,7 +6,7 @@ public class ConvexHullHeuristic{
 	public static ArrayList<Point> execute(ArrayList<Point> points) {
 		ArrayList<Point> convexHull = ConvexHull.execute(points);
 		ArrayList<Point> notInCH = new ArrayList<Point>();
-		ArrayList<Points> noInCH = new ArrayList<Points>();
+		ArrayList<TriPoints> noInCH = new ArrayList<TriPoints>();
 		
 		for(Point p : points){
 			if(convexHull.contains(p)){continue;}
@@ -15,7 +15,7 @@ public class ConvexHullHeuristic{
 		
 		while(notInCH.size()>0){
 			for(Point p : notInCH){
-				Points auxPnts = new Points(p);
+				TriPoints auxPnts = new TriPoints(p);
 				double min=Double.MAX_VALUE;
 				for(Point p1 : convexHull){
 					Point p2;
@@ -38,9 +38,9 @@ public class ConvexHullHeuristic{
 				noInCH.add(auxPnts);
 			}
 			
-			Points result = new Points(null, null, null);
+			TriPoints result = new TriPoints(null, null, null);
 			
-			for(Points pts : noInCH){
+			for(TriPoints pts : noInCH){
 				double min2=Double.MAX_VALUE;
 				double dd1 = calculateDistance(pts.getP(),pts.getP1());
 				double dd2 = calculateDistance(pts.getP(),pts.getP2());

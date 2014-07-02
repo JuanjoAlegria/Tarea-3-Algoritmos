@@ -1,0 +1,42 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   Tarea-3-Algoritmos/src/ConvexHullHeuristic.java
+#	modified:   Tarea-3-Algoritmos/src/Main.java
+#	modified:   Tarea-3-Algoritmos/src/NearestNeighbor.java
+#	modified:   Tarea-3-Algoritmos/src/Point.java
+#	modified:   Tarea-3-Algoritmos/src/Points.java
+#	modified:   bin/ConvexHullHeuristic.class
+#	modified:   bin/Main.class
+#	modified:   bin/NearestNeighbor.class
+#	modified:   bin/Point.class
+#	modified:   bin/Points.class
+#	modified:   resultadosnn.xlsx
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	MSTExperiment.txt
+#	Nearest NeighborExperiment.txt
+#	Tarea-3-Algoritmos/src/EjeX.java
+#	Tarea-3-Algoritmos/src/EjeY.java
+#	Tarea-3-Algoritmos/src/KdTree.java
+#	Tarea-3-Algoritmos/src/MeanKdTree.java
+#	Tarea-3-Algoritmos/src/MedianKdTree.java
+#	Tarea-3-Algoritmos/src/Splitaxis.java
+#	Tarea-3-Algoritmos/src/TriPoints.java
+#	Tarea-3-Algoritmos/src/Vecino.java
+#	bin/EjeX.class
+#	bin/EjeY.class
+#	bin/KdTree.class
+#	bin/MeanKdTree.class
+#	bin/MedianKdTree.class
+#	bin/Splitaxis.class
+#	bin/TriPoints.class
+#	bin/Vecino.class
+#	~$resultadosnn.xlsx
+

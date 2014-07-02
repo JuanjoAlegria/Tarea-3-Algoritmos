@@ -1,0 +1,66 @@
+Resultados del experimento con MST
+Pais: Western Sahara
+Tiempo [s]: 0.008492556
+Distance: 36533.02585044168
+Ratio: 1.3235164964113204
+
+Pais: Djibouti
+Tiempo [s]: 0.0043836610000000005
+Distance: 8497.28271687695
+Ratio: 1.2766350235692534
+
+Pais: Qatar
+Tiempo [s]: 0.052702830000000006
+Distance: 12493.859638089894
+Ratio: 1.335955906553667
+
+Pais: Uruguay
+Tiempo [s]: 0.213519329
+Distance: 108938.45146992103
+Ratio: 1.3769807046783253
+
+Pais: Zimbabwe
+Tiempo [s]: 0.12704780000000002
+Distance: 131294.3008850009
+Ratio: 1.3770444269232882
+
+Pais: Oman
+Tiempo [s]: 0.26992147
+Distance: 117816.55224454976
+Ratio: 1.3559120305273247
+
+Pais: Canada
+Tiempo [s]: 1.222614597
+Distance: 1785656.9464064382
+Ratio: 1.3838879737541168
+
+Pais: Japan
+Tiempo [s]: 4.198869494
+Distance: 665709.139841337
+Ratio: 1.3532764000970414
+
+Pais: Greece
+Tiempo [s]: 5.596718575000001
+Distance: 412386.7475907917
+Ratio: 1.370515513812913
+
+Pais: Finland
+Tiempo [s]: 7.409253971
+Distance: 716043.7518543457
+Ratio: 1.3756130841519185
+
+Pais: Italy
+Tiempo [s]: 18.278839471
+Distance: 765376.1542449191
+Ratio: 1.3733277486608455
+
+Pais: Vietnam
+Tiempo [s]: 29.684771991
+Distance: 777667.637522987
+Ratio: 1.3660355347785076
+
+Pais: Sweden
+Tiempo [s]: 44.927603583
+Distance: 1167704.7356743424
+Ratio: 1.36478357880444
+
