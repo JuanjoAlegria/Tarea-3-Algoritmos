@@ -1,41 +1,78 @@
 
-public class Points {
-	
-	private Point p;
-	private Point p1;
-	private Point p2;
-	
-	public Points(Point p, Point p1, Point p2) {
-		this.p = p;
-		this.p1 = p1;
-		this.p2 = p2;
-	}
-	
-	public Points(Point p) {
-		this.p = p;
-		this.p1 = null;
-		this.p2 = null;
-	}
-	
-	public Point getP() {
-		return p;
-	}
-	public void setP(Point p) {
-		this.p = p;
-	}
-	public Point getP1() {
-		return p1;
-	}
-	public void setP1(Point p1) {
-		this.p1 = p1;
-	}
-	public Point getP2() {
-		return p2;
-	}
-	public void setP2(Point p2) {
-		this.p2 = p2;
-	}
-	
-	
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
+
+
+public class Points {	
+	private double[] listX;
+	private double[] listY;
+	private int n;
+	
+	public Points(double[] listX, double[] listY){
+		this.listX = listX;
+		this.listY = listY;
+		this.n = listX.length;
+	}
+	
+	public Points(int n){
+		this.listX = new double[n];
+		this.listY = new double[n];
+		this.n=n;
+	}
+	
+	public Point getPoint(int n){
+		return new Point(listX[n], listY[n]);
+	}
+
+	public double[] getListX(){
+		return listX;
+	}
+	
+	public double[]getListY(){
+		return listY;
+	}
+	
+	public int size(){
+		return listX.length;
+	}
+	
+	public void addPoint(int index, int x, int y){
+		listX[index] = x;
+		listY[index] = y;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(listX);
+		result = prime * result + Arrays.hashCode(listY);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Points other = (Points) obj;
+		if (!Arrays.equals(listX, other.listX))
+			return false;
+		if (!Arrays.equals(listY, other.listY))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Points [listX=" + Arrays.toString(listX) + ", listY="
+				+ Arrays.toString(listY) + "]";
+	}
+	
+	
 }
